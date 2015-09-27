@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GAF;
 
 namespace Modelo
 {
-    public class Class1
+    public interface Condition
     {
+        double valueFromPersona(Persona persona);
     }
 }

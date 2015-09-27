@@ -7,7 +7,16 @@ using GAF;
 
 namespace Modelo
 {
-    class Persona : Chromosome
+    public class Persona 
     {
+        Name name;
+        Nationality nationality;
+        MouthAction mouthAction;
+        Vehicle vehicle;
+
+        public override string ToString()
+        {
+            return name.ToString() + " es " + nationality.ToString() + ", y " + mouthAction.ToString() + " en su " + vehicle.ToString();
+        }
     }
 }
