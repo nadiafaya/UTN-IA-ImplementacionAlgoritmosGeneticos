@@ -16,7 +16,7 @@ namespace Modelo
 
         public override string ToString()
         {
-            return name.ToString() + " es " + nationality.ToString() + ", y " + mouthAction.ToString() + " en su " + vehicle.ToString();
+            return string.Format("{0} es {1} y {2} en su {3}", name.ToString(), nationality.ToString(), mouthAction.ToString(), vehicle.ToString());
         }
     }
 }
