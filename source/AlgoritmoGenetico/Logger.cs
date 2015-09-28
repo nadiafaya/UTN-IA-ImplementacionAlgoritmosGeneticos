@@ -37,22 +37,22 @@ namespace AlgoritmoGenetico
         internal void informarResultados(GaEventArgs e, long cantIteracionesMax)
         {
             Chromosome cromo;
-            appendText(Color.Indigo, string.Format("Cantidad de individuos: {0}, Cantidad de iteraciones Máxima: {1}", e.Population.PopulationSize, cantIteracionesMax), true);
-            appendText(Color.Brown, string.Format("El mayor valor de ajuste alcanzado por la población final: {0}", e.Population.MaximumFitness), true);
-            appendText(Color.Red, string.Format("Número de iteración: {0}, Cantidad de cromosomas evaluados:", e.Generation, e.Evaluations), true);
-            appendText(Color.BlueViolet, "Mejor solución de la población final:", true);
+            informarNuevaLinea(Color.Indigo, string.Format("Cantidad de individuos: {0}, Cantidad de iteraciones Máxima: {1}", e.Population.PopulationSize, cantIteracionesMax));
+            informarNuevaLinea(Color.Brown, string.Format("El mayor valor de ajuste alcanzado por la población final: {0}", e.Population.MaximumFitness));
+            informarNuevaLinea(Color.Red, string.Format("Número de iteración: {0}, Cantidad de cromosomas evaluados:", e.Generation, e.Evaluations));
+            informarNuevaLinea(Color.BlueViolet, "Mejor solución de la población final:");
             cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
             informarCromosoma(cromo);
 
-            appendText(Color.BlueViolet, "Mejor solución de la corrida:", true);
+            informarNuevaLinea(Color.BlueViolet, "Mejor solución de la corrida:");
             if (mejorIteracion != 0)
             {
-                appendText(Color.Red, string.Format("Número de iteración: {0}, Cantidad de cromosomas evaluados: {1}", mejorIteracion, mejorGeneracion), true);
+                informarNuevaLinea(Color.Red, string.Format("Número de iteración: {0}, Cantidad de cromosomas evaluados: {1}", mejorIteracion, mejorGeneracion));
                 informarCromosoma(mejorSolucion);
             }
-            else appendText(Color.HotPink, "No hubo una mejor solucion durante la corrida", true);
+            else informarNuevaLinea(Color.HotPink, "No hubo una mejor solucion durante la corrida");
 
-            appendText(Color.BlueViolet, "Población de la solución:", true);
+            informarNuevaLinea(Color.BlueViolet, "Población de la solución:");
 
             foreach (Chromosome cromosoma in e.Population.Solutions)
             {
@@ -63,15 +63,13 @@ namespace AlgoritmoGenetico
 
         private void informarCromosoma(Chromosome cromosoma)
         {
-            appendText(Color.Black, string.Format("Aptitud: {0}", cromosoma.Fitness), true);
+            informarNuevaLinea(Color.Black, string.Format("Aptitud: {0}", cromosoma.Fitness));
         }
 
-        public void appendText(Color color, string text, bool EsNuevaLinea = false)
+        public void informarNuevaLinea(Color color, string text)
         {
-            if (EsNuevaLinea)
-            {
-                text += Environment.NewLine;
-            }
+           
+            text += Environment.NewLine;
 
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
