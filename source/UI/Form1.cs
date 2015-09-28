@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgoritmoGenetico;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace UI
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Iniciar_Click(object sender, EventArgs e)
+        {
+            EjecutarGAF();
+        }
+
+        private void EjecutarGAF()
+        {
+            AGHelper ag = AGHelper.getInstance();
         }
     }
 }
