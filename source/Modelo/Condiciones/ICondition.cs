@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using GAF;
 
-namespace Modelo
+namespace Modelo.Condiciones
 {
-    public interface Condition
+    public interface ICondition
     {
         double valueFromPersona(Persona persona);
     }

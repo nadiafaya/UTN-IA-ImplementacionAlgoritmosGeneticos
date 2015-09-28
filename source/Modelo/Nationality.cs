@@ -1,6 +1,6 @@
 ﻿namespace Modelo
 {
-    enum Nationality
+    public enum Nationality
     {
         Aleman,
         Turco,

@@ -1,6 +1,6 @@
 ﻿namespace Modelo
 {
-    enum Vehicle
+    public enum Vehicle
     {
         Bicicleta,
         Camion,

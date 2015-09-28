@@ -1,6 +1,6 @@
 ﻿namespace Modelo
 {
-    enum MouthAction
+    public enum MouthAction
     {
         Silba,
         Maldice,

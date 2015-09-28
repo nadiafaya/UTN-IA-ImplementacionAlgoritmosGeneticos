@@ -1,6 +1,6 @@
 ﻿namespace Modelo
 {
-    enum Name
+    public enum Name
     {
         Cosme,
         Gregorio,
