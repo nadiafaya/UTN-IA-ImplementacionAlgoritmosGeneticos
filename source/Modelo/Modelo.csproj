@@ -44,7 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Condition.cs" />
+    <Compile Include="Condiciones\Condicion1.cs" />
+    <Compile Include="Condiciones\Condicion10.cs" />
+    <Compile Include="Condiciones\Condicion11.cs" />
+    <Compile Include="Condiciones\Condicion12.cs" />
+    <Compile Include="Condiciones\Condicion13.cs" />
+    <Compile Include="Condiciones\Condicion14.cs" />
+    <Compile Include="Condiciones\Condicion15.cs" />
+    <Compile Include="Condiciones\Condicion16.cs" />
+    <Compile Include="Condiciones\Condicion17.cs" />
+    <Compile Include="Condiciones\Condicion18.cs" />
+    <Compile Include="Condiciones\Condicion19.cs" />
+    <Compile Include="Condiciones\Condicion2.cs" />
+    <Compile Include="Condiciones\Condicion20.cs" />
+    <Compile Include="Condiciones\Condicion21.cs" />
+    <Compile Include="Condiciones\Condicion22.cs" />
+    <Compile Include="Condiciones\Condicion23.cs" />
+    <Compile Include="Condiciones\Condicion24.cs" />
+    <Compile Include="Condiciones\Condicion3.cs" />
+    <Compile Include="Condiciones\Condicion4.cs" />
+    <Compile Include="Condiciones\Condicion5.cs" />
+    <Compile Include="Condiciones\Condicion6.cs" />
+    <Compile Include="Condiciones\Condicion7.cs" />
+    <Compile Include="Condiciones\Condicion8.cs" />
+    <Compile Include="Condiciones\Condicion9.cs" />
+    <Compile Include="Condiciones\ICondition.cs" />
     <Compile Include="IAPopulation.cs" />
     <Compile Include="MouthSound.cs" />
     <Compile Include="Name.cs" />
