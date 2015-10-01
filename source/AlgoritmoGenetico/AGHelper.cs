@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GAF;
 using GAF.Operators;
 using Modelo;
 using System.Diagnostics;
-using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
+using UI;
 
 namespace AlgoritmoGenetico
 {
@@ -23,7 +20,7 @@ namespace AlgoritmoGenetico
             }
             return _instance;
         }
-        private static int _cantidadDePoblacion = 800;
+        private static int _cantidadDePoblacion = 100;
         public static int cantidadDePoblacion
         {
             get { return _cantidadDePoblacion; }
@@ -36,16 +33,21 @@ namespace AlgoritmoGenetico
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 7000;
+        const int cantidadDeIteraciones = 80;
         double mejorFitness = -1;
         private Logger logger;
-
+        private List<DataPoint> puntos = new List<DataPoint>();
+        
         public AGHelper()
         {
             logger = Logger.Instance;
             reloj.Start();
             //var population = new IAPopulation(40);
-            var poblacion = new Population(_cantidadDePoblacion, longitudDelCromosoma, true, true, ParentSelectionMethod.FitnessProportionateSelection);
+            var poblacion = new Population(populationSize: _cantidadDePoblacion, 
+                    chromosomeLength: longitudDelCromosoma,
+                    reEvaluateAll: true,
+                    useLinearlyNormalisedFitness: true,
+                    selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
             //create the elite operator
             var elite = new Elite(porcentajeDeElitismo);
 
@@ -56,7 +58,7 @@ namespace AlgoritmoGenetico
             };
 
             //create the mutation operator
-            var mutacion = new SwapMutate(probabilidadDeMutacion);
+            var mutacion = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true);
             //create the GA
             var ga = new GeneticAlgorithm(poblacion, CalcularFitness);
 
@@ -75,20 +77,15 @@ namespace AlgoritmoGenetico
         void ga_OnRunComplete(object sender, GaEventArgs e)
         {
             reloj.Stop();
-            //var fittest = e.Population.GetTop(1)[0];
-            //foreach (var gene in fittest.Genes)
-            //{
-            //    Console.WriteLine(_cities[(int)gene.RealValue].Name);
-            //}
+            Grafica grafica = new Grafica(puntos);
+            grafica.Show();
         }
 
         private void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
             var fittest = e.Population.GetTop(1)[0];
-            var puntos = new DataPoint(e.Generation, e.Population.MaximumFitness);
+            puntos.Add(new DataPoint(e.Generation, e.Population.MaximumFitness));
             asignarMejorPoblacion(e);
-            //var distanceToTravel = CalculateDistance(fittest);
-            //Console.WriteLine("Generation: {0}, Fitness: {1}, Distance: {2}", e.Generation, fittest.Fitness, distanceToTravel);
         }
 
         private void asignarMejorPoblacion(GaEventArgs e)

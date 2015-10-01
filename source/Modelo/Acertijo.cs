@@ -11,7 +11,6 @@ namespace Modelo
     {
         private static Acertijo instance;
         private List<ICondition> condiciones = new List<ICondition>();
-        private int constanteDeFitness;
         const int valorDeInvalidos = -500;
         const int valorDeRepetidos = -500;
         private Acertijo()
@@ -138,13 +137,13 @@ namespace Modelo
 
             }
 
-            valor += constanteDeFitness * validarInvalidos(personas);
+            valor += validarInvalidos(personas);
 
-            valor += constanteDeFitness * validarMouthActionsRepetidas(personas);
+            valor += validarMouthActionsRepetidas(personas);
 
-            valor += constanteDeFitness * validarNacionalidadesRepetidas(personas);
+            valor += validarNacionalidadesRepetidas(personas);
 
-            valor += constanteDeFitness * validarVehiculosRepetidas(personas);
+            valor += validarVehiculosRepetidas(personas);
 
             return valor;
         }
