@@ -23,12 +23,12 @@ namespace AlgoritmoGenetico
             }
             return _instance;
         }
-        private static int _populationSize = 2;
-        public static int populationSize
+        private static int _cantidadDePoblacion = 800;
+        public static int cantidadDePoblacion
         {
-            get { return _populationSize; }
-            set { _populationSize = value; }
-        }
+            get { return _cantidadDePoblacion; }
+            set { _cantidadDePoblacion = value; }
+        }       
         const int porcentajeDeElitismo = 5;
         const double probabilidadDeCrossOver = 0.8;
         const double probabilidadDeMutacion = 0.02;
@@ -36,7 +36,7 @@ namespace AlgoritmoGenetico
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 3;
+        const int cantidadDeIteraciones = 7000;
         double mejorFitness = -1;
         private Logger logger;
 
@@ -45,7 +45,7 @@ namespace AlgoritmoGenetico
             logger = Logger.Instance;
             reloj.Start();
             //var population = new IAPopulation(40);
-            var poblacion = new Population(_populationSize, longitudDelCromosoma, true, true, ParentSelectionMethod.FitnessProportionateSelection);
+            var poblacion = new Population(_cantidadDePoblacion, longitudDelCromosoma, true, true, ParentSelectionMethod.FitnessProportionateSelection);
             //create the elite operator
             var elite = new Elite(porcentajeDeElitismo);
 
@@ -127,7 +127,7 @@ namespace AlgoritmoGenetico
 
         public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
-            return Poblacion.MaximumFitness >= fitnessRequerido || GeneracionActual == cantidadDeIteraciones;
+            return Poblacion.MaximumFitness >= 0 || GeneracionActual == cantidadDeIteraciones;
         }
     }
 }

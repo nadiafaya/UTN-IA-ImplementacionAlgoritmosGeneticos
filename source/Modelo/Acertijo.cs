@@ -12,12 +12,11 @@ namespace Modelo
         private static Acertijo instance;
         private List<ICondition> condiciones = new List<ICondition>();
         private int constanteDeFitness;
-        const int valorDeInvalidos = -10;
-        const int valorDeRepetidos = -10;
+        const int valorDeInvalidos = -500;
+        const int valorDeRepetidos = -500;
         private Acertijo()
         {
             AgregarCondiciones();
-            constanteDeFitness = 10;
         }
         #region condiciones
         private void AgregarCondiciones()
@@ -66,18 +65,10 @@ namespace Modelo
         {
             //valido que no tenga cadena de bits invalidas
             int valor =
-                modelos.Count(persona => persona.MouthAction == MouthAction.INVALID5) +
-                modelos.Count(persona => persona.Name == Name.INVALID5) +
-                modelos.Count(persona => persona.Nationality == Nationality.INVALID5) +
-                modelos.Count(persona => persona.Vehicle == Vehicle.INVALID5) +
-                modelos.Count(persona => persona.MouthAction == MouthAction.INVALID6) +
-                modelos.Count(persona => persona.Name == Name.INVALID6) +
-                modelos.Count(persona => persona.Nationality == Nationality.INVALID6) +
-                modelos.Count(persona => persona.Vehicle == Vehicle.INVALID6) +
-                modelos.Count(persona => persona.MouthAction == MouthAction.INVALID7) +
-                modelos.Count(persona => persona.Name == Name.INVALID7) +
-                modelos.Count(persona => persona.Nationality == Nationality.INVALID7) +
-                modelos.Count(persona => persona.Vehicle == Vehicle.INVALID7);
+                modelos.Count(persona => (persona.MouthAction == MouthAction.INVALID5 || persona.MouthAction == MouthAction.INVALID6 || persona.MouthAction == MouthAction.INVALID7)) +
+                modelos.Count(persona => (persona.Name == Name.INVALID5 || persona.Name == Name.INVALID6 || persona.Name == Name.INVALID7)) +
+                modelos.Count(persona => (persona.Nationality == Nationality.INVALID5 || persona.Nationality == Nationality.INVALID6 || persona.Nationality == Nationality.INVALID7)) +
+                modelos.Count(persona => (persona.Vehicle == Vehicle.INVALID5 || persona.Vehicle == Vehicle.INVALID6 || persona.Vehicle == Vehicle.INVALID7));
             return valor * valorDeInvalidos;
         }
 
@@ -155,7 +146,6 @@ namespace Modelo
 
             valor += constanteDeFitness * validarVehiculosRepetidas(personas);
 
-            if (valor < 0) valor = 0;
             return valor;
         }
 
