@@ -20,24 +20,36 @@ namespace AlgoritmoGenetico
             }
             return _instance;
         }
+        private static int _populationSize = 2;
+        public static int populationSize
+        {
+            get { return _populationSize; }
+            set { _populationSize = value; }
+        }
+        const int porcentajeDeElitismo = 5;
+        const double probabilidadDeCrossOver = 0.8;
+        const double probabilidadDeMutacion = 0.02;
+        const int longitudDelCromosoma = 45;
+        private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
 
         public AGHelper()
         {
-            var population = new IAPopulation(40);
+            //var population = new IAPopulation(40);
+            var poblacion = new Population(_populationSize, longitudDelCromosoma, true, true, ParentSelectionMethod.FitnessProportionateSelection);
             //create the elite operator
-            var elite = new Elite(5);
+            var elite = new Elite(porcentajeDeElitismo);
 
             //create the crossover operator
-            var crossover = new Crossover(0.8)
+            var crossover = new Crossover(probabilidadDeCrossOver)
             {
-                CrossoverType = CrossoverType.SinglePoint
+                CrossoverType = _TipoDeCrossOver
             };
 
             //create the mutation operator
-            var mutate = new SwapMutate(0.02);
+            var mutacion = new SwapMutate(probabilidadDeMutacion);
 
             //create the GA
-            var ga = new GeneticAlgorithm(population, CalculateFitness);
+            var ga = new GeneticAlgorithm(poblacion, CalcularFitness);
 
             //hook up to some useful events
             ga.OnGenerationComplete += ga_OnGenerationComplete;
@@ -46,7 +58,9 @@ namespace AlgoritmoGenetico
             //add the operators
             ga.Operators.Add(elite);
             ga.Operators.Add(crossover);
-            ga.Operators.Add(mutate);
+            ga.Operators.Add(mutacion);
+
+            ga.Run(FinalizarAG);
         }
 
         static void ga_OnRunComplete(object sender, GaEventArgs e)
@@ -65,11 +79,35 @@ namespace AlgoritmoGenetico
             //Console.WriteLine("Generation: {0}, Fitness: {1}, Distance: {2}", e.Generation, fittest.Fitness, distanceToTravel);
         }
 
-        public static double CalculateFitness(Chromosome chromosome)
+        public static double CalcularFitness(Chromosome cromosoma)
         {
+            double valorFitness = -1;
             //var distanceToTravel = CalculateDistance(chromosome);
             //return 1 - distanceToTravel / 10000;
-            return 0.0;
+            if(cromosoma != null)
+            {
+                if (cromosoma.Count.Equals(longitudDelCromosoma))
+                {
+                    valorFitness = Acertijo.Instance.FitnessFunction(cromosoma);
+                    valorFitness = 1200; //Retornar valor del fitness
+                }
+                else
+                {
+                    throw new ApplicationException("La longitud del cromosoma es incorrecta.");
+                }
+
+            }
+            else
+            {
+                throw new ArgumentNullException("cromosoma", "El cromosoma especificado es null.");
+            }
+            return valorFitness;
+        }
+
+        public static bool FinalizarAG(Population Poblacion,
+        int GeneracionActual, long EvaluacionActual)
+        {
+            return GeneracionActual > 1000;
         }
     }
 }
