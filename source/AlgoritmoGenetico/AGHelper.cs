@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using GAF;
 using GAF.Operators;
 using Modelo;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AlgoritmoGenetico
 {
@@ -31,9 +34,16 @@ namespace AlgoritmoGenetico
         const double probabilidadDeMutacion = 0.02;
         const int longitudDelCromosoma = 45;
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
+        private Stopwatch reloj = new Stopwatch();
+        const int fitnessRequerido = 1000;
+        const int cantidadDeIteraciones = 3;
+        double mejorFitness = -1;
+        private Logger logger;
 
         public AGHelper()
         {
+            logger = Logger.Instance;
+            reloj.Start();
             //var population = new IAPopulation(40);
             var poblacion = new Population(_populationSize, longitudDelCromosoma, true, true, ParentSelectionMethod.FitnessProportionateSelection);
             //create the elite operator
@@ -47,7 +57,6 @@ namespace AlgoritmoGenetico
 
             //create the mutation operator
             var mutacion = new SwapMutate(probabilidadDeMutacion);
-
             //create the GA
             var ga = new GeneticAlgorithm(poblacion, CalcularFitness);
 
@@ -63,8 +72,9 @@ namespace AlgoritmoGenetico
             ga.Run(FinalizarAG);
         }
 
-        static void ga_OnRunComplete(object sender, GaEventArgs e)
+        void ga_OnRunComplete(object sender, GaEventArgs e)
         {
+            reloj.Stop();
             //var fittest = e.Population.GetTop(1)[0];
             //foreach (var gene in fittest.Genes)
             //{
@@ -72,11 +82,23 @@ namespace AlgoritmoGenetico
             //}
         }
 
-        private static void ga_OnGenerationComplete(object sender, GaEventArgs e)
+        private void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
-            //var fittest = e.Population.GetTop(1)[0];
+            var fittest = e.Population.GetTop(1)[0];
+            var puntos = new DataPoint(e.Generation, e.Population.MaximumFitness);
+            asignarMejorPoblacion(e);
             //var distanceToTravel = CalculateDistance(fittest);
             //Console.WriteLine("Generation: {0}, Fitness: {1}, Distance: {2}", e.Generation, fittest.Fitness, distanceToTravel);
+        }
+
+        private void asignarMejorPoblacion(GaEventArgs e)
+        {
+            Chromosome cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
+            if (cromo.Fitness > mejorFitness)
+            {
+                mejorFitness = cromo.Fitness;
+                logger.asignarMejorSolucion(cromo, e.Generation, e.Evaluations);
+            }
         }
 
         public static double CalcularFitness(Chromosome cromosoma)
@@ -103,10 +125,9 @@ namespace AlgoritmoGenetico
             return valorFitness;
         }
 
-        public static bool FinalizarAG(Population Poblacion,
-        int GeneracionActual, long EvaluacionActual)
+        public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
-            return GeneracionActual > 1000;
+            return Poblacion.MaximumFitness >= fitnessRequerido || GeneracionActual == cantidadDeIteraciones;
         }
     }
 }

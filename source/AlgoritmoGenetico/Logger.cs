@@ -78,5 +78,12 @@ namespace AlgoritmoGenetico
             box.AppendText(text);
             box.SelectionColor = box.ForeColor;
         }
+
+        internal void asignarMejorSolucion(Chromosome cromosoma, int iteracion, long generacion)
+        {
+            mejorSolucion = cromosoma;
+            mejorIteracion = iteracion;
+            mejorGeneracion = generacion;
+        }
     }
 }
