@@ -133,7 +133,7 @@ namespace Modelo
 
         public double FitnessFunction(Chromosome cromosoma)
         {
-            double valor = 500;
+            double valor = 0;
 
             List<Persona> personas = crearModelos(cromosoma);
 
@@ -142,7 +142,7 @@ namespace Modelo
             {
                 foreach (Persona persona in personas)
                 {
-                    valor += constanteDeFitness * condicion.valueFromPersona(persona);
+                    valor += condicion.valueFromPersona(persona);
                 }
 
             }
@@ -180,17 +180,17 @@ namespace Modelo
         {
             var particiones = particionar(cromosoma.Genes, 9);
             List<Persona> personas = new List<Persona>();
-            int indice = 0;
-
+            int i = 0;
+            List<string> nombres = obtenerNombres();
             foreach (var particion in particiones)
             {
                 //TODO Verificar el método obtenerGenesAuxiliares para obtener los genes principales y auxiliares
                 List<string> genesAuxiliares = obtenerGenesAuxiliares(particion.ToList<Gene>());
                 PersonaBuilder builder = PersonaBuilder.Instance;
-                builder.configurar(indice, genesAuxiliares[0], genesAuxiliares[1], genesAuxiliares[2], "111");
+                builder.configurar(i, genesAuxiliares[0], genesAuxiliares[1], genesAuxiliares[2], nombres[i]);
                 Persona modelo = builder.build();
                 personas.Add(modelo);
-                indice++;
+                i++;
             }
             return personas;
         }
@@ -218,6 +218,17 @@ namespace Modelo
 
             if (innerListCounter > 0)
                 yield return items.Skip(numberOfPackets * partitionSize);
+        }
+
+        private List<string> obtenerNombres()
+        {
+            List<string> nombres = new List<string>();
+            nombres.Add("000");
+            nombres.Add("001");
+            nombres.Add("010");
+            nombres.Add("011");
+            nombres.Add("100");
+            return nombres;
         }
     }
 }

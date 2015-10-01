@@ -89,7 +89,6 @@ namespace AlgoritmoGenetico
                 if (cromosoma.Count.Equals(longitudDelCromosoma))
                 {
                     valorFitness = Acertijo.Instance.FitnessFunction(cromosoma);
-                    valorFitness = 1200; //Retornar valor del fitness
                 }
                 else
                 {
