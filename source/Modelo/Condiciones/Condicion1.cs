@@ -10,10 +10,10 @@ namespace Modelo.Condiciones
     {
         public double valueFromPersona(Persona persona)
         {
-            double retorno = -10;
+            double retorno = Valores.INVALIDO;
             if(persona.MouthAction.Equals(MouthAction.Silba) && !persona.Nationality.Equals(Nationality.Griego))
             {
-                retorno = 50;
+                retorno = Valores.VALIDO;
             }
             return retorno;
         }

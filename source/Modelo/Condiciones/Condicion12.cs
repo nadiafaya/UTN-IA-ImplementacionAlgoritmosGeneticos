@@ -10,10 +10,10 @@ namespace Modelo.Condiciones
     {
         public double valueFromPersona(Persona persona)
         {
-            double retorno = -10;
+            double retorno = Valores.INVALIDO;
             if (persona.Vehicle.Equals(Vehicle.Moto) && persona.Nationality.Equals(Nationality.Turco))
             {
-                retorno = 50;
+                retorno = Valores.VALIDO;
             }
             return retorno;
         }

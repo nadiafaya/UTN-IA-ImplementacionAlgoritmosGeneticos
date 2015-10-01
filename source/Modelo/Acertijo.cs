@@ -11,8 +11,8 @@ namespace Modelo
     {
         private static Acertijo instance;
         private List<ICondition> condiciones = new List<ICondition>();
-        const int valorDeInvalidos = -500;
-        const int valorDeRepetidos = -500;
+        const int valorDeInvalidos = -30;
+        const int valorDeRepetidos = -30;
         private Acertijo()
         {
             AgregarCondiciones();

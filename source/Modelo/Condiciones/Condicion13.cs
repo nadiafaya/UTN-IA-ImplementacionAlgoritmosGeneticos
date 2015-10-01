@@ -11,10 +11,10 @@ namespace Modelo.Condiciones
         List<Int32> vehiculos = new List<int> {(Int32)MouthAction.Maldice, (Int32)MouthAction.Recita, (Int32)MouthAction.Silba };
         public double valueFromPersona(Persona persona)
         {
-            double retorno = -10;
+            double retorno = Valores.INVALIDO;
             if (persona.Vehicle.Equals(Vehicle.Moto) && !vehiculos.Contains((Int32)persona.MouthAction))
             {
-                retorno = 50;
+                retorno = Valores.VALIDO;
             }
             return retorno;
         }

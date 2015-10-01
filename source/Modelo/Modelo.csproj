@@ -70,6 +70,7 @@
     <Compile Include="Condiciones\Condicion8.cs" />
     <Compile Include="Condiciones\Condicion9.cs" />
     <Compile Include="Condiciones\ICondition.cs" />
+    <Compile Include="Condiciones\Valores.cs" />
     <Compile Include="IAPopulation.cs" />
     <Compile Include="MouthSound.cs" />
     <Compile Include="Name.cs" />

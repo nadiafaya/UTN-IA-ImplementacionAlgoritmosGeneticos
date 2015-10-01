@@ -33,7 +33,7 @@ namespace AlgoritmoGenetico
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 80;
+        const int cantidadDeIteraciones = 8000;
         double mejorFitness = -1;
         private Logger logger;
         private List<DataPoint> puntos = new List<DataPoint>();
