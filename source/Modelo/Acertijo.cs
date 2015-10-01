@@ -137,7 +137,7 @@ namespace Modelo
 
             List<Persona> personas = crearModelos(cromosoma);
 
-            //Polimorfismo para las validaciones
+            //Polimorfismo para las condiciones
             foreach (var condicion in condiciones)
             {
                 foreach (Persona persona in personas)
@@ -147,16 +147,12 @@ namespace Modelo
 
             }
 
-            //me fijo si tiene partes invalidas => decremento el valor
             valor += constanteDeFitness * validarInvalidos(personas);
 
-            //me fijo si hay posiciones repetidas => decremento el valor
             valor += constanteDeFitness * validarMouthActionsRepetidas(personas);
 
-            //me fijo si hay colores repetidos => decremento el valor
             valor += constanteDeFitness * validarNacionalidadesRepetidas(personas);
 
-            //me fijo si hay pertenencias repetidas => decremento el valor
             valor += constanteDeFitness * validarVehiculosRepetidas(personas);
 
             if (valor < 0) valor = 0;
