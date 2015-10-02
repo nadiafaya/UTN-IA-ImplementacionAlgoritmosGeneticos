@@ -13,9 +13,12 @@ namespace UI
 {
     public partial class MainForm : Form
     {
+        private AGHelper agInstance;
+
         public MainForm()
         {
             InitializeComponent();
+            agInstance = AGHelper.getInstance();
         }
 
         private void Iniciar_Click(object sender, EventArgs e)
@@ -25,7 +28,7 @@ namespace UI
 
         private void EjecutarGAF()
         {
-            AGHelper ag = AGHelper.getInstance();
+            agInstance.Run();
         }
     }
 }

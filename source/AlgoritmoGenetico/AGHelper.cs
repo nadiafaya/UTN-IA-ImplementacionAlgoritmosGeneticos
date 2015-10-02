@@ -25,7 +25,26 @@ namespace AlgoritmoGenetico
         {
             get { return _cantidadDePoblacion; }
             set { _cantidadDePoblacion = value; }
-        }       
+        }
+
+        public IGeneticOperator SelectionOperator
+        {
+            get;
+            set;
+        }
+
+        public IGeneticOperator CrossOperator
+        {
+            get;
+            set;
+        }
+
+        public IGeneticOperator MutationOperator
+        {
+            get;
+            set;
+        }
+
         const int porcentajeDeElitismo = 5;
         const double probabilidadDeCrossOver = 0.8;
         const double probabilidadDeMutacion = 0.02;
@@ -33,10 +52,11 @@ namespace AlgoritmoGenetico
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 8000;
+        const int cantidadDeIteraciones = 20;
         double mejorFitness = -1;
         private Logger logger;
         private List<DataPoint> puntos = new List<DataPoint>();
+        private GeneticAlgorithm ga;
         
         public AGHelper()
         {
@@ -49,27 +69,29 @@ namespace AlgoritmoGenetico
                     useLinearlyNormalisedFitness: true,
                     selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
             //create the elite operator
-            var elite = new Elite(porcentajeDeElitismo);
+            SelectionOperator = new Elite(porcentajeDeElitismo);
 
             //create the crossover operator
-            var crossover = new Crossover(probabilidadDeCrossOver)
+            CrossOperator = new Crossover(probabilidadDeCrossOver)
             {
                 CrossoverType = _TipoDeCrossOver
             };
 
             //create the mutation operator
-            var mutacion = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true);
+            MutationOperator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true);
             //create the GA
-            var ga = new GeneticAlgorithm(poblacion, CalcularFitness);
+            ga = new GeneticAlgorithm(poblacion, CalcularFitness);
 
             //hook up to some useful events
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
+        }
 
+        public void Run() {
             //add the operators
-            ga.Operators.Add(elite);
-            ga.Operators.Add(crossover);
-            ga.Operators.Add(mutacion);
+            ga.Operators.Add(SelectionOperator);
+            ga.Operators.Add(CrossOperator);
+            ga.Operators.Add(MutationOperator);
 
             ga.Run(FinalizarAG);
         }
