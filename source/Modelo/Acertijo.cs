@@ -11,8 +11,6 @@ namespace Modelo
     {
         private static Acertijo instance;
         private List<ICondition> condiciones = new List<ICondition>();
-        const int valorDeInvalidos = -30;
-        const int valorDeRepetidos = -30;
         private Acertijo()
         {
             AgregarCondiciones();
@@ -68,7 +66,7 @@ namespace Modelo
                 modelos.Count(persona => (persona.Name == Name.INVALID5 || persona.Name == Name.INVALID6 || persona.Name == Name.INVALID7)) +
                 modelos.Count(persona => (persona.Nationality == Nationality.INVALID5 || persona.Nationality == Nationality.INVALID6 || persona.Nationality == Nationality.INVALID7)) +
                 modelos.Count(persona => (persona.Vehicle == Vehicle.INVALID5 || persona.Vehicle == Vehicle.INVALID6 || persona.Vehicle == Vehicle.INVALID7));
-            return valor * valorDeInvalidos;
+            return valor * (int)Valores.ERROR;
         }
 
         private int ValidadNombresRepetidos(List<Persona> personas)
@@ -78,7 +76,7 @@ namespace Modelo
             foreach (Persona persona in personas)
             {
                 nombre = persona.Name;
-                if (personas.Count(x => x.Name == nombre) > 1) return valor += valorDeRepetidos;
+                if (personas.Count(x => x.Name == nombre) > 1) return valor += (int)Valores.ERROR;
             }
             return valor;
         }
@@ -90,7 +88,7 @@ namespace Modelo
             foreach (Persona persona in personas)
             {
                 vehicle = persona.Vehicle;
-                if (personas.Count(x => x.Vehicle == vehicle) > 1) return valor += valorDeRepetidos;
+                if (personas.Count(x => x.Vehicle == vehicle) > 1) return valor += (int)Valores.ERROR;
             }
             return valor;
         }
@@ -102,7 +100,7 @@ namespace Modelo
             foreach (Persona persona in personas)
             {
                 mouthAction = persona.MouthAction;
-                if (personas.Count(x => x.MouthAction == mouthAction) > 1) return valor += valorDeRepetidos;
+                if (personas.Count(x => x.MouthAction == mouthAction) > 1) return valor += (int)Valores.ERROR;
             }
             return valor;
         }
@@ -114,7 +112,7 @@ namespace Modelo
             foreach (Persona persona in personas)
             {
                 nacionalidad = persona.Nationality;
-                if (personas.Count(x => x.Nationality == nacionalidad) > 1) return valor += valorDeRepetidos;
+                if (personas.Count(x => x.Nationality == nacionalidad) > 1) return valor += (int)Valores.ERROR;
             }
             return valor;
         }
@@ -130,11 +128,7 @@ namespace Modelo
             //Polimorfismo para las condiciones
             foreach (var condicion in condiciones)
             {
-                foreach (Persona persona in personas)
-                {
-                    valor += condicion.valueFromPersona(persona);
-                }
-
+                valor += condicion.valueFromPersona(personas);
             }
 
             valor += validarInvalidos(personas);

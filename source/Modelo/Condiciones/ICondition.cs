@@ -9,6 +9,6 @@ namespace Modelo.Condiciones
 {
     public interface ICondition
     {
-        double valueFromPersona(Persona persona);
+        double valueFromPersona(List<Persona> personas);
     }
 }

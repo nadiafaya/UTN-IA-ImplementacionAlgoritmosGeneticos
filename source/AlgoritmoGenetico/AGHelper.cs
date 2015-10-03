@@ -52,7 +52,7 @@ namespace AlgoritmoGenetico
         private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 20;
+        const int cantidadDeIteraciones = 80;
         double mejorFitness = -1;
         private Logger logger;
         private List<DataPoint> puntos = new List<DataPoint>();
@@ -146,7 +146,7 @@ namespace AlgoritmoGenetico
 
         public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
-            return Poblacion.MaximumFitness >= 0 || GeneracionActual == cantidadDeIteraciones;
+            return Poblacion.MaximumFitness >= fitnessRequerido|| GeneracionActual == cantidadDeIteraciones;
         }
     }
 }
