@@ -124,7 +124,7 @@ namespace AlgoritmoGenetico
 
         public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
-            return Poblacion.MaximumFitness >= 0 || GeneracionActual == cantidadDeIteraciones;
+            return Poblacion.MaximumFitness >= fitnessRequerido|| GeneracionActual == cantidadDeIteraciones;
         }
     }
 }
