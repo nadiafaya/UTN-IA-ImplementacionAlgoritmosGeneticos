@@ -130,11 +130,7 @@ namespace Modelo
             //Polimorfismo para las condiciones
             foreach (var condicion in condiciones)
             {
-                foreach (Persona persona in personas)
-                {
-                    valor += condicion.valueFromPersona(persona);
-                }
-
+                valor += condicion.valueFromPersona(personas);
             }
 
             valor += validarInvalidos(personas);

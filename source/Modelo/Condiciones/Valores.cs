@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Modelo.Condiciones
 {
-    public class Valores
+    public enum Valores
     {
-        public const int VALIDO = 10;
-        public const int INVALIDO = -5;
-        public const int ERROR = -30;
+        VALIDO = 10,
+        INVALIDO = -5,
+        ERROR = -30
     }
 }

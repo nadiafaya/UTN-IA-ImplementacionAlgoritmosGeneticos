@@ -8,12 +8,13 @@ namespace Modelo.Condiciones
 {
     class Condicion19 : ICondition
     {
-        public double valueFromPersona(Persona persona)
+        public double valueFromPersona(List<Persona> personas)
         {
-            double retorno = Valores.INVALIDO;
-            if (persona.MouthAction.Equals(MouthAction.Tararea) && persona.Vehicle.Equals(Vehicle.Bicicleta))
+            double retorno = (double)Valores.INVALIDO;
+            if (personas.FindAll(persona => persona.MouthAction.Equals(MouthAction.Tararea) && persona.Vehicle.Equals(Vehicle.Bicicleta))
+                        .Count > 0)
             {
-                retorno = Valores.VALIDO;
+                retorno = (double)Valores.VALIDO;
             }
             return retorno;
         }

@@ -8,12 +8,13 @@ namespace Modelo.Condiciones
 {
     class Condicion24 : ICondition
     {
-        public double valueFromPersona(Persona persona)
+        public double valueFromPersona(List<Persona> personas)
         {
-            double retorno = Valores.INVALIDO;
-            if (persona.Name.Equals(Name.Aquiles) && !persona.Nationality.Equals(Nationality.Griego))
+            double retorno = (double)Valores.INVALIDO;
+            if (personas.FindAll(persona => persona.Name.Equals(Name.Aquiles) && !persona.Nationality.Equals(Nationality.Griego))
+                        .Count > 0)
             {
-                retorno = Valores.VALIDO;
+                retorno = (double)Valores.VALIDO;
             }
             return retorno;
         }
