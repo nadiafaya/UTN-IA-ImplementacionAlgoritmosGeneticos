@@ -8,8 +8,8 @@ namespace Modelo.Condiciones
 {
     public enum Valores
     {
-        VALIDO = 10,
-        INVALIDO = -5,
-        ERROR = -30
+        VALIDO = 50,
+        INVALIDO = -10,
+        ERROR = -100
     }
 }
