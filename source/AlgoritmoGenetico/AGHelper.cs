@@ -11,7 +11,7 @@ namespace AlgoritmoGenetico
 {
     public class AGHelper
     {
-        const int porcentajeDeElitismo = 5;
+        const int porcentajeInicialDeElitismo = 5;
         const double probabilidadDeCrossOver = 0.8;
         const double probabilidadDeMutacion = 0.02;
         const int longitudDelCromosoma = 45;
@@ -46,6 +46,27 @@ namespace AlgoritmoGenetico
             set;
         }
 
+        private List<GeneticOperator> _selectionOperators;
+        public List<GeneticOperator> SelectionOperators
+        {
+            get { return _selectionOperators; }
+            set { _selectionOperators = value; }
+        }
+
+        private List<GeneticOperator> _crossOperators;
+        public List<GeneticOperator> CrossOperators
+        {
+            get { return _crossOperators; }
+            set { _crossOperators = value; }
+        }
+
+        private List<GeneticOperator> _mutationOperators;
+        public List<GeneticOperator> MutationOperators
+        {
+            get { return _mutationOperators; }
+            set { _mutationOperators = value; }
+        }
+
         public IGeneticOperator CrossOperator
         {
             get;
@@ -69,28 +90,18 @@ namespace AlgoritmoGenetico
                     useLinearlyNormalisedFitness: true,
                     selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
 
-            //create the GA
-            ga = new GeneticAlgorithm(poblacion, CalcularFitness);
-
-            //hook up to some useful events
-            ga.OnGenerationComplete += ga_OnGenerationComplete;
-            ga.OnRunComplete += ga_OnRunComplete;
-        }
-
-        public List<GeneticOperator> GetSelectionGeneticOperators()
-        {
-            return new List<GeneticOperator>() {
+            // create selection operators
+            _selectionOperators = new List<GeneticOperator>() {
                 new GeneticOperator()
                 {
                     Name = "Torneo (Elitismo)",
-                    Operator = new Elite(porcentajeDeElitismo)
+                    Operator = new Elite(porcentajeInicialDeElitismo)
                 }
             };
-        }
 
-        public List<GeneticOperator> GetCrossGeneticOperators()
-        {
-            return new List<GeneticOperator>() {
+            // create cross operators
+
+            _crossOperators = new List<GeneticOperator>() {
                 new GeneticOperator()
                 {
                     Name = "Simple",
@@ -100,20 +111,27 @@ namespace AlgoritmoGenetico
                     }
                 }
             };
-        }
 
-        public List<GeneticOperator> GetMutationGeneticOperators()
-        {
-            return new List<GeneticOperator>() {
+            // create mutation operators
+            _mutationOperators = new List<GeneticOperator>() {
                 new GeneticOperator()
                 {
                     Name = "Simple",
                     Operator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true)
                 }
             };
+
+            //create the GA
+            ga = new GeneticAlgorithm(poblacion, CalcularFitness);
+
+            //hook up to some useful events
+            ga.OnGenerationComplete += ga_OnGenerationComplete;
+            ga.OnRunComplete += ga_OnRunComplete;
         }
 
         public void Run() {
+            // clear elements
+            ga.Operators.Clear();
             //add the operators
             ga.Operators.Add(SelectionOperator);
             ga.Operators.Add(CrossOperator);
@@ -173,6 +191,11 @@ namespace AlgoritmoGenetico
         public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
             return Poblacion.MaximumFitness >= fitnessRequerido|| GeneracionActual == cantidadDeIteraciones;
+        }
+
+        public void UpdateElitismOptions(int porcentajeDeElitismo)
+        {
+            ((Elite)SelectionOperators[0].Operator).Percentage = porcentajeDeElitismo;
         }
     }
 }

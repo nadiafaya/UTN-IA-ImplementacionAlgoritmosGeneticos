@@ -24,19 +24,15 @@ namespace UI
 
         private void LoadGeneticOperatorsControls()
         {
-            var selectionOperators = agInstance.GetSelectionGeneticOperators();
-            LoadGeneticOperatorsIntoControl(selectionOperators, selectionComboBox);
-            var crossOperators = agInstance.GetCrossGeneticOperators();
-            LoadGeneticOperatorsIntoControl(crossOperators, crossComboBox);
-            var mutationOperators = agInstance.GetMutationGeneticOperators();
-            LoadGeneticOperatorsIntoControl(mutationOperators, mutationComboBox);
+            LoadGeneticOperatorsIntoControl(agInstance.SelectionOperators, selectionComboBox);
+            LoadGeneticOperatorsIntoControl(agInstance.CrossOperators, crossComboBox);
+            LoadGeneticOperatorsIntoControl(agInstance.MutationOperators, mutationComboBox);
         }
 
         private void LoadGeneticOperatorsIntoControl(List<GeneticOperator> geneticOperators, ComboBox control)
         {
             control.Items.AddRange(geneticOperators.Cast<object>().ToArray());
-            control.ValueMember = null;
-            control.DisplayMember = "Name";
+            
             control.SelectedIndex = 0;
         }
 
@@ -59,6 +55,16 @@ namespace UI
             agInstance.CrossOperator = selectedCrossOperator.Operator;
             var selectedMutationOperator = (GeneticOperator) mutationComboBox.SelectedItem;
             agInstance.MutationOperator= selectedMutationOperator.Operator;
+        }
+
+        private void SelectionOperatorChanged(object sender, EventArgs e)
+        {
+            elitismOptions.Visible = selectionComboBox.SelectedIndex == 0;
+        }
+
+        private void ElitismOptionsChanged(object sender, EventArgs e)
+        {
+            agInstance.UpdateElitismOptions((int)elitismPercentage.Value);
         }
     }
 }
