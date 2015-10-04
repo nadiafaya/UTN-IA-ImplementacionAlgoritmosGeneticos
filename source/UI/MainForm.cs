@@ -19,6 +19,25 @@ namespace UI
         {
             InitializeComponent();
             agInstance = AGHelper.getInstance();
+            LoadGeneticOperatorsControls();
+        }
+
+        private void LoadGeneticOperatorsControls()
+        {
+            var selectionOperators = agInstance.GetSelectionGeneticOperators();
+            LoadGeneticOperatorsIntoControl(selectionOperators, selectionComboBox);
+            var crossOperators = agInstance.GetCrossGeneticOperators();
+            LoadGeneticOperatorsIntoControl(crossOperators, crossComboBox);
+            var mutationOperators = agInstance.GetMutationGeneticOperators();
+            LoadGeneticOperatorsIntoControl(mutationOperators, mutationComboBox);
+        }
+
+        private void LoadGeneticOperatorsIntoControl(List<GeneticOperator> geneticOperators, ComboBox control)
+        {
+            control.Items.AddRange(geneticOperators.Cast<object>().ToArray());
+            control.ValueMember = null;
+            control.DisplayMember = "Name";
+            control.SelectedIndex = 0;
         }
 
         private void Iniciar_Click(object sender, EventArgs e)
@@ -28,7 +47,18 @@ namespace UI
 
         private void EjecutarGAF()
         {
+            LoadAGWithSelectedOperators();
             agInstance.Run();
+        }
+
+        private void LoadAGWithSelectedOperators()
+        {
+            var selectedSelectionOperator = (GeneticOperator) selectionComboBox.SelectedItem;
+            agInstance.SelectionOperator = selectedSelectionOperator.Operator;
+            var selectedCrossOperator = (GeneticOperator) crossComboBox.SelectedItem;
+            agInstance.CrossOperator = selectedCrossOperator.Operator;
+            var selectedMutationOperator = (GeneticOperator) mutationComboBox.SelectedItem;
+            agInstance.MutationOperator= selectedMutationOperator.Operator;
         }
     }
 }

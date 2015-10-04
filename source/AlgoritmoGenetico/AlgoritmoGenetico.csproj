@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ConditionsHelper.cs" />
     <Compile Include="AGHelper.cs" />
+    <Compile Include="GeneticOperator.cs" />
     <Compile Include="Grafica.cs">
       <SubType>Form</SubType>
     </Compile>

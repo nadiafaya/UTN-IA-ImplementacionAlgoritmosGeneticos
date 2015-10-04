@@ -11,6 +11,19 @@ namespace AlgoritmoGenetico
 {
     public class AGHelper
     {
+        const int porcentajeDeElitismo = 5;
+        const double probabilidadDeCrossOver = 0.8;
+        const double probabilidadDeMutacion = 0.02;
+        const int longitudDelCromosoma = 45;
+        private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
+        private Stopwatch reloj = new Stopwatch();
+        const int fitnessRequerido = 1000;
+        const int cantidadDeIteraciones = 80;
+        double mejorFitness = -1;
+        private Logger logger;
+        private List<DataPoint> puntos = new List<DataPoint>();
+        private GeneticAlgorithm ga;
+
         private static AGHelper _instance;
         public static AGHelper getInstance()
         {
@@ -44,19 +57,6 @@ namespace AlgoritmoGenetico
             get;
             set;
         }
-
-        const int porcentajeDeElitismo = 5;
-        const double probabilidadDeCrossOver = 0.8;
-        const double probabilidadDeMutacion = 0.02;
-        const int longitudDelCromosoma = 45;
-        private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
-        private Stopwatch reloj = new Stopwatch();
-        const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 80;
-        double mejorFitness = -1;
-        private Logger logger;
-        private List<DataPoint> puntos = new List<DataPoint>();
-        private GeneticAlgorithm ga;
         
         public AGHelper()
         {
@@ -85,6 +85,42 @@ namespace AlgoritmoGenetico
             //hook up to some useful events
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
+        }
+
+        public List<GeneticOperator> GetSelectionGeneticOperators()
+        {
+            return new List<GeneticOperator>() {
+                new GeneticOperator()
+                {
+                    Name = "Torneo (Elitismo)",
+                    Operator = new Elite(porcentajeDeElitismo)
+                }
+            };
+        }
+
+        public List<GeneticOperator> GetCrossGeneticOperators()
+        {
+            return new List<GeneticOperator>() {
+                new GeneticOperator()
+                {
+                    Name = "Simple",
+                    Operator = new Crossover(probabilidadDeCrossOver)
+                    {
+                        CrossoverType = CrossoverType.SinglePoint
+                    }
+                }
+            };
+        }
+
+        public List<GeneticOperator> GetMutationGeneticOperators()
+        {
+            return new List<GeneticOperator>() {
+                new GeneticOperator()
+                {
+                    Name = "Simple",
+                    Operator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true)
+                }
+            };
         }
 
         public void Run() {

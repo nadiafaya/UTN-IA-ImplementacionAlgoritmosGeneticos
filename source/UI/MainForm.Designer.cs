@@ -76,11 +76,6 @@
             // mutationComboBox
             // 
             this.mutationComboBox.FormattingEnabled = true;
-            this.mutationComboBox.Items.AddRange(new object[] {
-            "Simple",
-            "Adaptativa por Convergencia",
-            "Adaptativa por Temperatura - Descendente",
-            "Adaptativa por Temperatura - Ascendente"});
             this.mutationComboBox.Location = new System.Drawing.Point(73, 110);
             this.mutationComboBox.Name = "mutationComboBox";
             this.mutationComboBox.Size = new System.Drawing.Size(436, 21);
@@ -98,12 +93,6 @@
             // crossComboBox
             // 
             this.crossComboBox.FormattingEnabled = true;
-            this.crossComboBox.Items.AddRange(new object[] {
-            "Simple",
-            "Multipunto",
-            "Binomial - Máscara complemento",
-            "Binomial - Máscara doble",
-            "Binomial - Al azar"});
             this.crossComboBox.Location = new System.Drawing.Point(73, 72);
             this.crossComboBox.Name = "crossComboBox";
             this.crossComboBox.Size = new System.Drawing.Size(436, 21);
@@ -121,11 +110,6 @@
             // selectionComboBox
             // 
             this.selectionComboBox.FormattingEnabled = true;
-            this.selectionComboBox.Items.AddRange(new object[] {
-            "Torneo (Elitismo)",
-            "Ranking",
-            "Ruleta",
-            "Control sobre número esperado"});
             this.selectionComboBox.Location = new System.Drawing.Point(73, 36);
             this.selectionComboBox.Name = "selectionComboBox";
             this.selectionComboBox.Size = new System.Drawing.Size(436, 21);
