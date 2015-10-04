@@ -68,17 +68,7 @@ namespace AlgoritmoGenetico
                     reEvaluateAll: true,
                     useLinearlyNormalisedFitness: true,
                     selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
-            //create the elite operator
-            SelectionOperator = new Elite(porcentajeDeElitismo);
 
-            //create the crossover operator
-            CrossOperator = new Crossover(probabilidadDeCrossOver)
-            {
-                CrossoverType = _TipoDeCrossOver
-            };
-
-            //create the mutation operator
-            MutationOperator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true);
             //create the GA
             ga = new GeneticAlgorithm(poblacion, CalcularFitness);
 
