@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Iniciar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,9 +45,9 @@
             this.elitismOptions = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.configurationPage = new System.Windows.Forms.TabPage();
+            this.resultsPage = new System.Windows.Forms.TabPage();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,9 +55,9 @@
             this.elitismOptions.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.configurationPage.SuspendLayout();
+            this.resultsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,54 +223,54 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Mutación";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(707, 358);
-            this.tabControl1.TabIndex = 2;
+            this.tabControl.Controls.Add(this.configurationPage);
+            this.tabControl.Controls.Add(this.resultsPage);
+            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(707, 358);
+            this.tabControl.TabIndex = 2;
             // 
-            // tabPage1
+            // configurationPage
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.Iniciar);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(699, 332);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Configurar algoritmo";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.configurationPage.Controls.Add(this.groupBox1);
+            this.configurationPage.Controls.Add(this.Iniciar);
+            this.configurationPage.Location = new System.Drawing.Point(4, 22);
+            this.configurationPage.Name = "configurationPage";
+            this.configurationPage.Padding = new System.Windows.Forms.Padding(3);
+            this.configurationPage.Size = new System.Drawing.Size(699, 332);
+            this.configurationPage.TabIndex = 0;
+            this.configurationPage.Text = "Configurar algoritmo";
+            this.configurationPage.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // resultsPage
             // 
-            this.tabPage2.Controls.Add(this.chart);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(699, 332);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Resultados";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.resultsPage.BackColor = System.Drawing.Color.White;
+            this.resultsPage.Controls.Add(this.chart);
+            this.resultsPage.Location = new System.Drawing.Point(4, 22);
+            this.resultsPage.Name = "resultsPage";
+            this.resultsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.resultsPage.Size = new System.Drawing.Size(699, 332);
+            this.resultsPage.TabIndex = 1;
+            this.resultsPage.Text = "Resultados";
             // 
             // chart
             // 
-            chartArea1.AxisX.Title = "Iteraciones";
-            chartArea1.AxisY.Title = "Valor de aptitud";
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea5.AxisX.Title = "Iteraciones";
+            chartArea5.AxisY.Title = "Valor de aptitud";
+            chartArea5.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea5);
             this.chart.Location = new System.Drawing.Point(6, 6);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsXValueIndexed = true;
-            series1.Name = "Función de aptitud";
-            series1.ShadowColor = System.Drawing.Color.DimGray;
-            this.chart.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.IsXValueIndexed = true;
+            series5.Name = "Función de aptitud";
+            series5.ShadowColor = System.Drawing.Color.DimGray;
+            this.chart.Series.Add(series5);
             this.chart.Size = new System.Drawing.Size(684, 325);
             this.chart.TabIndex = 1;
             this.chart.Text = "chart";
@@ -280,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 382);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
             this.Text = "Implementación de Algoritmo Genético";
             this.groupBox1.ResumeLayout(false);
@@ -293,9 +293,9 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.configurationPage.ResumeLayout(false);
+            this.resultsPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 
@@ -318,9 +318,9 @@
         private System.Windows.Forms.Panel elitismOptions;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage configurationPage;
+        private System.Windows.Forms.TabPage resultsPage;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
     }
 }

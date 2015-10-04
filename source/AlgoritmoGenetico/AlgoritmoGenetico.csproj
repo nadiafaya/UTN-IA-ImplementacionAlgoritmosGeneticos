@@ -50,12 +50,6 @@
     <Compile Include="ConditionsHelper.cs" />
     <Compile Include="AGHelper.cs" />
     <Compile Include="GeneticOperator.cs" />
-    <Compile Include="Grafica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Grafica.Designer.cs">
-      <DependentUpon>Grafica.cs</DependentUpon>
-    </Compile>
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,11 +61,6 @@
       <Project>{c41a0f67-3f22-4fdd-b53f-931143cc69bb}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Grafica.resx">
-      <DependentUpon>Grafica.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

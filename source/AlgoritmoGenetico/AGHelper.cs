@@ -5,7 +5,6 @@ using GAF.Operators;
 using Modelo;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
-using UI;
 
 namespace AlgoritmoGenetico
 {
@@ -78,11 +77,15 @@ namespace AlgoritmoGenetico
             get;
             set;
         }
-        
+
+        public Action<GaEventArgs> OnRunCompleteCallback;
+        public Action<GaEventArgs> OnGenerationCompleteCallback;
+
         public AGHelper()
         {
             logger = Logger.Instance;
             reloj.Start();
+
             //var population = new IAPopulation(40);
             var poblacion = new Population(populationSize: _cantidadDePoblacion, 
                     chromosomeLength: longitudDelCromosoma,
@@ -143,15 +146,20 @@ namespace AlgoritmoGenetico
         void ga_OnRunComplete(object sender, GaEventArgs e)
         {
             reloj.Stop();
-            Grafica grafica = new Grafica(puntos);
-            grafica.Show();
+            if (OnRunCompleteCallback != null)
+            {
+                OnRunCompleteCallback(e);
+            }
         }
 
         private void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
             var fittest = e.Population.GetTop(1)[0];
-            puntos.Add(new DataPoint(e.Generation, e.Population.MaximumFitness));
             asignarMejorPoblacion(e);
+            if(OnGenerationCompleteCallback != null)
+            {
+                OnGenerationCompleteCallback(e);
+            }
         }
 
         private void asignarMejorPoblacion(GaEventArgs e)
