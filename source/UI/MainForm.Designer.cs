@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Iniciar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.mutationComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.crossComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.selectionComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.elitismOptions = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.elitismPercentage = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.elitismOptions = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.selectionComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.configurationPage = new System.Windows.Forms.TabPage();
             this.resultsPage = new System.Windows.Forms.TabPage();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).BeginInit();
-            this.elitismOptions.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.elitismOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).BeginInit();
             this.tabControl.SuspendLayout();
             this.configurationPage.SuspendLayout();
             this.resultsPage.SuspendLayout();
@@ -83,14 +84,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operadores Genéticos";
             // 
-            // label3
+            // groupBox4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Tipo";
+            this.groupBox4.Controls.Add(this.mutationComboBox);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Location = new System.Drawing.Point(16, 177);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(626, 58);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Mutación";
             // 
             // mutationComboBox
             // 
@@ -102,14 +105,25 @@
             this.mutationComboBox.TabIndex = 4;
             this.mutationComboBox.ValueMember = "null";
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tipo";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Tipo";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.crossComboBox);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(16, 104);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(626, 55);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Cruza";
             // 
             // crossComboBox
             // 
@@ -121,25 +135,14 @@
             this.crossComboBox.TabIndex = 2;
             this.crossComboBox.ValueMember = "null";
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tipo";
-            // 
-            // selectionComboBox
-            // 
-            this.selectionComboBox.DisplayMember = "Name";
-            this.selectionComboBox.FormattingEnabled = true;
-            this.selectionComboBox.Location = new System.Drawing.Point(40, 19);
-            this.selectionComboBox.Name = "selectionComboBox";
-            this.selectionComboBox.Size = new System.Drawing.Size(435, 21);
-            this.selectionComboBox.TabIndex = 0;
-            this.selectionComboBox.ValueMember = "null";
-            this.selectionComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectionOperatorChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Tipo";
             // 
             // groupBox2
             // 
@@ -152,6 +155,26 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selección";
+            // 
+            // elitismOptions
+            // 
+            this.elitismOptions.Controls.Add(this.label5);
+            this.elitismOptions.Controls.Add(this.label4);
+            this.elitismOptions.Controls.Add(this.elitismPercentage);
+            this.elitismOptions.Location = new System.Drawing.Point(6, 46);
+            this.elitismOptions.Name = "elitismOptions";
+            this.elitismOptions.Size = new System.Drawing.Size(206, 25);
+            this.elitismOptions.TabIndex = 7;
+            this.elitismOptions.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(182, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "%";
             // 
             // label4
             // 
@@ -181,47 +204,25 @@
             0});
             this.elitismPercentage.ValueChanged += new System.EventHandler(this.ElitismOptionsChanged);
             // 
-            // label5
+            // selectionComboBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(182, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "%";
+            this.selectionComboBox.DisplayMember = "Name";
+            this.selectionComboBox.FormattingEnabled = true;
+            this.selectionComboBox.Location = new System.Drawing.Point(40, 19);
+            this.selectionComboBox.Name = "selectionComboBox";
+            this.selectionComboBox.Size = new System.Drawing.Size(435, 21);
+            this.selectionComboBox.TabIndex = 0;
+            this.selectionComboBox.ValueMember = "null";
+            this.selectionComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectionOperatorChanged);
             // 
-            // elitismOptions
+            // label1
             // 
-            this.elitismOptions.Controls.Add(this.label5);
-            this.elitismOptions.Controls.Add(this.label4);
-            this.elitismOptions.Controls.Add(this.elitismPercentage);
-            this.elitismOptions.Location = new System.Drawing.Point(6, 46);
-            this.elitismOptions.Name = "elitismOptions";
-            this.elitismOptions.Size = new System.Drawing.Size(206, 25);
-            this.elitismOptions.TabIndex = 7;
-            this.elitismOptions.Visible = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.crossComboBox);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(16, 104);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(626, 55);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Cruza";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.mutationComboBox);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Location = new System.Drawing.Point(16, 177);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(626, 58);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Mutación";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Tipo";
             // 
             // tabControl
             // 
@@ -258,41 +259,49 @@
             // 
             // chart
             // 
-            chartArea5.AxisX.Title = "Iteraciones";
-            chartArea5.AxisY.Title = "Valor de aptitud";
-            chartArea5.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea5);
+            chartArea4.AxisX.Title = "Iteraciones";
+            chartArea4.AxisY.Title = "Valor de aptitud";
+            chartArea4.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea4);
             this.chart.Location = new System.Drawing.Point(6, 6);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.IsXValueIndexed = true;
-            series5.Name = "Función de aptitud";
-            series5.ShadowColor = System.Drawing.Color.DimGray;
-            this.chart.Series.Add(series5);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.IsXValueIndexed = true;
+            series4.Name = "Función de aptitud";
+            series4.ShadowColor = System.Drawing.Color.DimGray;
+            this.chart.Series.Add(series4);
             this.chart.Size = new System.Drawing.Size(684, 325);
             this.chart.TabIndex = 1;
             this.chart.Text = "chart";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(16, 375);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(696, 23);
+            this.progressBar.TabIndex = 9;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 382);
+            this.ClientSize = new System.Drawing.Size(724, 410);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
             this.Text = "Implementación de Algoritmo Genético";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).EndInit();
-            this.elitismOptions.ResumeLayout(false);
-            this.elitismOptions.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.elitismOptions.ResumeLayout(false);
+            this.elitismOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.configurationPage.ResumeLayout(false);
             this.resultsPage.ResumeLayout(false);
@@ -322,6 +331,7 @@
         private System.Windows.Forms.TabPage configurationPage;
         private System.Windows.Forms.TabPage resultsPage;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

@@ -47,8 +47,10 @@ namespace UI
 
         private void EjecutarGAF()
         {
+            progressBar.Value = 1;
+            groupBox1.Enabled = false;
+            Iniciar.Enabled = false;
             LoadAGWithSelectedOperators();
-            tabControl.SelectTab(resultsPage);
             agInstance.Run();
         }
 
@@ -74,14 +76,18 @@ namespace UI
 
         private void OnRunComplete(GaEventArgs e)
         {
+            tabControl.SelectTab(resultsPage);
             chart.Show();
+            progressBar.Value = 0;
+            groupBox1.Enabled = true;
+            Iniciar.Enabled = true;
         }
 
         private void OnGenerationComplete(GaEventArgs e)
         {
+            progressBar.Value = (int) (Decimal.Divide(e.Generation, 80) * 100);
             var point = new DataPoint(e.Generation, e.Population.MaximumFitness);
-            chart.Series[0].Points.AddXY(point.XValue, point.YValues[0]);
-            
+            chart.Series[0].Points.AddXY(point.XValue, point.YValues[0]);            
         }
     }
 }
