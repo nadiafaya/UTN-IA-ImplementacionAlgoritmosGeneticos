@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Iniciar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -47,8 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.configurationPage = new System.Windows.Forms.TabPage();
-            this.resultsPage = new System.Windows.Forms.TabPage();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -58,8 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).BeginInit();
             this.tabControl.SuspendLayout();
             this.configurationPage.SuspendLayout();
-            this.resultsPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // Iniciar
@@ -227,7 +221,6 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.configurationPage);
-            this.tabControl.Controls.Add(this.resultsPage);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -245,36 +238,6 @@
             this.configurationPage.TabIndex = 0;
             this.configurationPage.Text = "Configurar algoritmo";
             this.configurationPage.UseVisualStyleBackColor = true;
-            // 
-            // resultsPage
-            // 
-            this.resultsPage.BackColor = System.Drawing.Color.White;
-            this.resultsPage.Controls.Add(this.chart);
-            this.resultsPage.Location = new System.Drawing.Point(4, 22);
-            this.resultsPage.Name = "resultsPage";
-            this.resultsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.resultsPage.Size = new System.Drawing.Size(699, 332);
-            this.resultsPage.TabIndex = 1;
-            this.resultsPage.Text = "Resultados";
-            // 
-            // chart
-            // 
-            chartArea4.AxisX.Title = "Iteraciones";
-            chartArea4.AxisY.Title = "Valor de aptitud";
-            chartArea4.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea4);
-            this.chart.Location = new System.Drawing.Point(6, 6);
-            this.chart.Name = "chart";
-            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.IsXValueIndexed = true;
-            series4.Name = "Función de aptitud";
-            series4.ShadowColor = System.Drawing.Color.DimGray;
-            this.chart.Series.Add(series4);
-            this.chart.Size = new System.Drawing.Size(684, 325);
-            this.chart.TabIndex = 1;
-            this.chart.Text = "chart";
             // 
             // progressBar
             // 
@@ -304,8 +267,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.elitismPercentage)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.configurationPage.ResumeLayout(false);
-            this.resultsPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,8 +290,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage configurationPage;
-        private System.Windows.Forms.TabPage resultsPage;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.ProgressBar progressBar;
     }
 }

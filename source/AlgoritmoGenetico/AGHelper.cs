@@ -14,7 +14,6 @@ namespace AlgoritmoGenetico
         const double probabilidadDeCrossOver = 0.8;
         const double probabilidadDeMutacion = 0.02;
         const int longitudDelCromosoma = 45;
-        private CrossoverType _TipoDeCrossOver = CrossoverType.SinglePoint;
         private Stopwatch reloj = new Stopwatch();
         const int fitnessRequerido = 1000;
         const int cantidadDeIteraciones = 80;
@@ -85,14 +84,7 @@ namespace AlgoritmoGenetico
         {
             logger = Logger.Instance;
             reloj.Start();
-
-            //var population = new IAPopulation(40);
-            var poblacion = new Population(populationSize: _cantidadDePoblacion, 
-                    chromosomeLength: longitudDelCromosoma,
-                    reEvaluateAll: true,
-                    useLinearlyNormalisedFitness: true,
-                    selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
-
+            
             // create selection operators
             _selectionOperators = new List<GeneticOperator>() {
                 new GeneticOperator()
@@ -123,24 +115,29 @@ namespace AlgoritmoGenetico
                     Operator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true)
                 }
             };
-
-            //create the GA
-            ga = new GeneticAlgorithm(poblacion, CalcularFitness);
-
-            //hook up to some useful events
-            ga.OnGenerationComplete += ga_OnGenerationComplete;
-            ga.OnRunComplete += ga_OnRunComplete;
         }
 
         public void Run() {
-            // clear elements
-            ga.Operators.Clear();
+            //create the GA
+            ga = new GeneticAlgorithm(CreatePopulation(), CalcularFitness);
+            //hook up to some useful events
+            ga.OnGenerationComplete += ga_OnGenerationComplete;
+            ga.OnRunComplete += ga_OnRunComplete;
             //add the operators
             ga.Operators.Add(SelectionOperator);
             ga.Operators.Add(CrossOperator);
             ga.Operators.Add(MutationOperator);
 
             ga.Run(FinalizarAG);
+        }
+
+        private Population CreatePopulation()
+        {
+            return new Population(populationSize: _cantidadDePoblacion,
+                    chromosomeLength: longitudDelCromosoma,
+                    reEvaluateAll: true,
+                    useLinearlyNormalisedFitness: true,
+                    selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
         }
 
         void ga_OnRunComplete(object sender, GaEventArgs e)

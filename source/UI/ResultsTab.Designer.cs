@@ -1,16 +1,16 @@
 ﻿namespace UI
 {
-    partial class Grafica
+    partial class ResultsTab
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de componentes
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -40,7 +40,7 @@
             chartArea1.AxisY.Title = "Valor de aptitud";
             chartArea1.Name = "ChartArea1";
             this.chart.ChartAreas.Add(chartArea1);
-            this.chart.Location = new System.Drawing.Point(23, 12);
+            this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
@@ -50,17 +50,16 @@
             series1.ShadowColor = System.Drawing.Color.DimGray;
             this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(684, 325);
-            this.chart.TabIndex = 0;
+            this.chart.TabIndex = 3;
             this.chart.Text = "chart";
             // 
-            // Grafica
+            // ResultsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 351);
             this.Controls.Add(this.chart);
-            this.Name = "Grafica";
-            this.Text = "Grafica";
+            this.Name = "ResultsTab";
+            this.Size = new System.Drawing.Size(690, 332);
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 

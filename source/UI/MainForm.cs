@@ -16,6 +16,9 @@ namespace UI
     public partial class MainForm : Form
     {
         private AGHelper agInstance;
+        private int resultsCount = 0;
+        private TabPage currentResultsPage;
+        private ResultsTab currentResultsTab;
 
         public MainForm()
         {
@@ -47,11 +50,22 @@ namespace UI
 
         private void EjecutarGAF()
         {
+            
             progressBar.Value = 1;
             groupBox1.Enabled = false;
             Iniciar.Enabled = false;
+            CreateResultsTab();
             LoadAGWithSelectedOperators();
             agInstance.Run();
+        }
+
+        private void CreateResultsTab()
+        {
+            resultsCount += 1;
+            currentResultsPage = new TabPage("Results " + resultsCount);
+            currentResultsTab = new ResultsTab();
+            currentResultsTab.Dock = DockStyle.Fill;
+            currentResultsPage.Controls.Add(currentResultsTab);
         }
 
         private void LoadAGWithSelectedOperators()
@@ -76,8 +90,9 @@ namespace UI
 
         private void OnRunComplete(GaEventArgs e)
         {
-            tabControl.SelectTab(resultsPage);
-            chart.Show();
+            tabControl.TabPages.Add(currentResultsPage);
+            tabControl.SelectTab(currentResultsPage);
+            currentResultsTab.ShowChart();
             progressBar.Value = 0;
             groupBox1.Enabled = true;
             Iniciar.Enabled = true;
@@ -86,8 +101,7 @@ namespace UI
         private void OnGenerationComplete(GaEventArgs e)
         {
             progressBar.Value = (int) (Decimal.Divide(e.Generation, 80) * 100);
-            var point = new DataPoint(e.Generation, e.Population.MaximumFitness);
-            chart.Series[0].Points.AddXY(point.XValue, point.YValues[0]);            
+            currentResultsTab.AddPoint(e.Generation, e.Population.MaximumFitness);            
         }
     }
 }
