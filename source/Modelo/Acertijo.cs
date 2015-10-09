@@ -123,7 +123,7 @@ namespace Modelo
         {
             double valor = 0;
 
-            List<Persona> personas = crearModelos(cromosoma);
+            List<Persona> personas = CrearModelos(cromosoma);
 
             //Polimorfismo para las condiciones
             foreach (var condicion in condiciones)
@@ -159,7 +159,7 @@ namespace Modelo
             return caracteristicas;
         }
 
-        private List<Persona> crearModelos(Chromosome cromosoma)
+        public List<Persona> CrearModelos(Chromosome cromosoma)
         {
             var particiones = particionar(cromosoma.Genes, 9);
             List<Persona> personas = new List<Persona>();

@@ -58,7 +58,7 @@
             // 
             // Iniciar
             // 
-            this.Iniciar.Location = new System.Drawing.Point(293, 286);
+            this.Iniciar.Location = new System.Drawing.Point(290, 494);
             this.Iniciar.Name = "Iniciar";
             this.Iniciar.Size = new System.Drawing.Size(112, 23);
             this.Iniciar.TabIndex = 0;
@@ -224,7 +224,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(707, 358);
+            this.tabControl.Size = new System.Drawing.Size(707, 558);
             this.tabControl.TabIndex = 2;
             // 
             // configurationPage
@@ -234,14 +234,14 @@
             this.configurationPage.Location = new System.Drawing.Point(4, 22);
             this.configurationPage.Name = "configurationPage";
             this.configurationPage.Padding = new System.Windows.Forms.Padding(3);
-            this.configurationPage.Size = new System.Drawing.Size(699, 332);
+            this.configurationPage.Size = new System.Drawing.Size(699, 532);
             this.configurationPage.TabIndex = 0;
             this.configurationPage.Text = "Configurar algoritmo";
             this.configurationPage.UseVisualStyleBackColor = true;
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(16, 375);
+            this.progressBar.Location = new System.Drawing.Point(19, 576);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(696, 23);
             this.progressBar.TabIndex = 9;
@@ -250,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 410);
+            this.ClientSize = new System.Drawing.Size(724, 611);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";

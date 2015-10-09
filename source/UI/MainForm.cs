@@ -92,7 +92,7 @@ namespace UI
         {
             tabControl.TabPages.Add(currentResultsPage);
             tabControl.SelectTab(currentResultsPage);
-            currentResultsTab.ShowChart();
+            currentResultsTab.ShowChart(e);
             progressBar.Value = 0;
             groupBox1.Enabled = true;
             Iniciar.Enabled = true;

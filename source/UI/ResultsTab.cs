@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GAF;
+using Modelo;
 
 namespace UI
 {
@@ -22,9 +24,19 @@ namespace UI
             chart.Series[0].Points.AddXY(xValue, yValue);
         }
 
-        public void ShowChart()
+        public void ShowChart(GaEventArgs e)
         {
             chart.Show();
+            var maxIndividualChromosome = e.Population.GetTop(1).First();
+            var maxIndividual = Acertijo.Instance.CrearModelos(maxIndividualChromosome);
+            resultsText.Text = "Generaciones: " + e.Generation + "\n" +
+                "Población final: " + "\n" +
+                "Tamaño" + e.Population.PopulationSize + " individuos" + "\n" +
+                "Mejor individuo: " + "\n";
+            foreach(var persona in maxIndividual)
+            {
+                resultsText.Text += "Nombre: " + persona.Name + ", Nacionalidad: " + persona.Nationality + ", Vehículo: " + persona.Vehicle + ", Gesto: " + persona.MouthAction + "\n";
+            }
         }
     }
 }

@@ -101,6 +101,10 @@
       <Project>{8fbabce3-99b1-4632-b192-406316025129}</Project>
       <Name>AlgoritmoGenetico</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{c41a0f67-3f22-4fdd-b53f-931143cc69bb}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
