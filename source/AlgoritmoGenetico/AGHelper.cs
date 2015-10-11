@@ -107,7 +107,7 @@ namespace AlgoritmoGenetico
                 },
                 new GeneticOperator()
                 {
-                    Name="Doble",
+                    Name="Multipunto",
                     Operator = new Crossover(probabilidadDeCrossOver)
                     {
                         CrossoverType = CrossoverType.DoublePoint
@@ -115,7 +115,7 @@ namespace AlgoritmoGenetico
                 },
                 new GeneticOperator()
                 {
-                    Name="Doble Ordenada",
+                    Name="Binomial",
                     Operator= new Crossover(probabilidadDeCrossOver)
                     {
                         CrossoverType = CrossoverType.DoublePointOrdered
@@ -132,7 +132,7 @@ namespace AlgoritmoGenetico
                 },
                 new GeneticOperator()
                 {
-                    Name= "Intercambiada",
+                    Name= "Convergencia",
                     Operator = new SwapMutate(mutationProbability: probabilidadDeMutacion)
                 }
             };
