@@ -31,9 +31,10 @@ namespace UI
             var maxIndividual = Acertijo.Instance.CrearModelos(maxIndividualChromosome);
             resultsText.Text = "Generaciones: " + e.Generation + "\n" +
                 "Población final: " + "\n" +
-                "Tamaño" + e.Population.PopulationSize + " individuos" + "\n" +
-                "Mejor individuo: " + "\n";
-            foreach(var persona in maxIndividual)
+                "Tamaño: " + e.Population.PopulationSize + " individuos" + "\n" +
+                "Mejor individuo: " + "\n"+
+                "Mejor individuo Fitness: " + e.Population.MaximumFitness.ToString() + "\n";
+            foreach (var persona in maxIndividual)
             {
                 resultsText.Text += "Nombre: " + persona.Name + ", Nacionalidad: " + persona.Nationality + ", Vehículo: " + persona.Vehicle + ", Gesto: " + persona.MouthAction + "\n";
             }

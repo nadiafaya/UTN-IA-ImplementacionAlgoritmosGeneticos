@@ -66,6 +66,8 @@ namespace UI
             currentResultsTab = new ResultsTab();
             currentResultsTab.Dock = DockStyle.Fill;
             currentResultsPage.Controls.Add(currentResultsTab);
+            tabControl.TabPages.Add(currentResultsPage);
+            tabControl.SelectTab(currentResultsPage);
         }
 
         private void LoadAGWithSelectedOperators()
@@ -90,8 +92,6 @@ namespace UI
 
         private void OnRunComplete(GaEventArgs e)
         {
-            tabControl.TabPages.Add(currentResultsPage);
-            tabControl.SelectTab(currentResultsPage);
             currentResultsTab.ShowChart(e);
             progressBar.Value = 0;
             groupBox1.Enabled = true;
@@ -100,8 +100,36 @@ namespace UI
 
         private void OnGenerationComplete(GaEventArgs e)
         {
-            progressBar.Value = (int) (Decimal.Divide(e.Generation, 80) * 100);
-            currentResultsTab.AddPoint(e.Generation, e.Population.MaximumFitness);            
+            progressBar.Value = (int) (Decimal.Divide(e.Generation, AGHelper.cantidadDeIteraciones) * 100);
+            currentResultsTab.AddPoint(e.Generation, e.Population.MaximumFitness);
+            currentResultsTab.ShowChart(e);
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            AGHelper.cantidadDeIteraciones = (int)numericUpDown1.Value;
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            AGHelper.fitnessRequerido = (int)numericUpDown2.Value;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            numericUpDown1.Value = AGHelper.cantidadDeIteraciones;
+            numericUpDown2.Value = AGHelper.fitnessRequerido;
+            numericUpDown3.Value = (Decimal)AGHelper.probabilidadDeMutacion;
         }
     }
 }

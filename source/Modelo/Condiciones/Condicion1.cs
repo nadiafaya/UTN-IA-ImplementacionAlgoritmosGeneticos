@@ -13,7 +13,8 @@ namespace Modelo.Condiciones
 
             double retorno = (double)Valores.INVALIDO;
             if (personas.FindAll(persona => persona.MouthAction.Equals(MouthAction.Silba) && !persona.Nationality.Equals(Nationality.Griego))
-                        .Count > 0)
+                        .Count > 0 &&
+                        personas.FindAll(persona => persona.MouthAction.Equals(MouthAction.Silba)).Count == 1)
             {
                 retorno = (double)Valores.VALIDO;
             }

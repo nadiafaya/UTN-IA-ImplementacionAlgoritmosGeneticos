@@ -12,7 +12,7 @@ namespace Modelo.Condiciones
         {
             double retorno = (double)Valores.INVALIDO;
             if (personas.FindAll(persona => persona.MouthAction.Equals(MouthAction.Tararea) && persona.Vehicle.Equals(Vehicle.Bicicleta))
-                        .Count > 0)
+                        .Count == 1 )
             {
                 retorno = (double)Valores.VALIDO;
             }

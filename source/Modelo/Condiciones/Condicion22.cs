@@ -12,7 +12,7 @@ namespace Modelo.Condiciones
         {
             double retorno = (double)Valores.INVALIDO;
             if (personas.FindAll(persona => persona.Nationality.Equals(Nationality.Aleman) && !persona.Name.Equals(Name.Aquiles))
-                        .Count > 0)
+                        .Count == 1)
             {
                 retorno = (double)Valores.VALIDO;
             }

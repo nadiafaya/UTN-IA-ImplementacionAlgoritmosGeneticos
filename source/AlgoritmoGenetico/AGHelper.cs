@@ -12,11 +12,11 @@ namespace AlgoritmoGenetico
     {
         const int porcentajeInicialDeElitismo = 5;
         const double probabilidadDeCrossOver = 0.8;
-        const double probabilidadDeMutacion = 0.02;
+        static public double probabilidadDeMutacion = 0.12;
         const int longitudDelCromosoma = 45;
         private Stopwatch reloj = new Stopwatch();
-        const int fitnessRequerido = 1000;
-        const int cantidadDeIteraciones = 80;
+        static public int fitnessRequerido = 1200;
+        static public int cantidadDeIteraciones = 1000;
         double mejorFitness = -1;
         private Logger logger;
         private List<DataPoint> puntos = new List<DataPoint>();
