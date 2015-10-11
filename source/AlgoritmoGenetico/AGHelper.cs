@@ -129,6 +129,11 @@ namespace AlgoritmoGenetico
                 {
                     Name = "Simple",
                     Operator = new BinaryMutate(mutationProbability: probabilidadDeMutacion, allowDuplicates: true)
+                },
+                new GeneticOperator()
+                {
+                    Name= "Intercambiada",
+                    Operator = new SwapMutate(mutationProbability: probabilidadDeMutacion)
                 }
             };
         }
