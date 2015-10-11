@@ -10,6 +10,6 @@ namespace Modelo.Condiciones
     {
         VALIDO = 50,
         INVALIDO = -10,
-        ERROR = -100
+        ERROR = -300
     }
 }
