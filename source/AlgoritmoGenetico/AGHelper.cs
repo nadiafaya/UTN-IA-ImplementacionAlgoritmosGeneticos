@@ -91,6 +91,16 @@ namespace AlgoritmoGenetico
                 {
                     Name = "Torneo (Elitismo)",
                     Operator = new Elite(porcentajeInicialDeElitismo)
+                }, 
+                new GeneticOperator()
+                {
+                    Name="Random",
+                    Operator = new Copy(CopyMethod.Random)
+                },
+                new GeneticOperator()
+                {
+                    Name = "Fittest",
+                    Operator = new Copy(CopyMethod.Fittest)
                 }
             };
 
@@ -111,14 +121,6 @@ namespace AlgoritmoGenetico
                     Operator = new Crossover(probabilidadDeCrossOver)
                     {
                         CrossoverType = CrossoverType.DoublePoint
-                    }
-                },
-                new GeneticOperator()
-                {
-                    Name="Binomial",
-                    Operator= new Crossover(probabilidadDeCrossOver)
-                    {
-                        CrossoverType = CrossoverType.DoublePointOrdered
                     }
                 }
             };
