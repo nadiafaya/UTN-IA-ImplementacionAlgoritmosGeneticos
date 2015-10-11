@@ -84,7 +84,7 @@ namespace AlgoritmoGenetico
         {
             logger = Logger.Instance;
             reloj.Start();
-            
+
             // create selection operators
             _selectionOperators = new List<GeneticOperator>() {
                 new GeneticOperator()
@@ -104,6 +104,22 @@ namespace AlgoritmoGenetico
                     {
                         CrossoverType = CrossoverType.SinglePoint
                     }
+                },
+                new GeneticOperator()
+                {
+                    Name="Doble",
+                    Operator = new Crossover(probabilidadDeCrossOver)
+                    {
+                        CrossoverType = CrossoverType.DoublePoint
+                    }
+                },
+                new GeneticOperator()
+                {
+                    Name="Doble Ordenada",
+                    Operator= new Crossover(probabilidadDeCrossOver)
+                    {
+                        CrossoverType = CrossoverType.DoublePointOrdered
+                    }
                 }
             };
 
@@ -117,7 +133,8 @@ namespace AlgoritmoGenetico
             };
         }
 
-        public void Run() {
+        public void Run()
+        {
             //create the GA
             ga = new GeneticAlgorithm(CreatePopulation(), CalcularFitness);
             //hook up to some useful events
@@ -153,7 +170,7 @@ namespace AlgoritmoGenetico
         {
             var fittest = e.Population.GetTop(1)[0];
             asignarMejorPoblacion(e);
-            if(OnGenerationCompleteCallback != null)
+            if (OnGenerationCompleteCallback != null)
             {
                 OnGenerationCompleteCallback(e);
             }
@@ -174,7 +191,7 @@ namespace AlgoritmoGenetico
             double valorFitness = -1;
             //var distanceToTravel = CalculateDistance(chromosome);
             //return 1 - distanceToTravel / 10000;
-            if(cromosoma != null)
+            if (cromosoma != null)
             {
                 if (cromosoma.Count.Equals(longitudDelCromosoma))
                 {
@@ -195,7 +212,7 @@ namespace AlgoritmoGenetico
 
         public bool FinalizarAG(Population Poblacion, int GeneracionActual, long EvaluacionActual)
         {
-            return Poblacion.MaximumFitness >= fitnessRequerido|| GeneracionActual == cantidadDeIteraciones;
+            return Poblacion.MaximumFitness >= fitnessRequerido || GeneracionActual == cantidadDeIteraciones;
         }
 
         public void UpdateElitismOptions(int porcentajeDeElitismo)
