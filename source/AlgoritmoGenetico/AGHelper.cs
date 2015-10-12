@@ -15,7 +15,7 @@ namespace AlgoritmoGenetico
         static public double probabilidadDeMutacion = 0.12;
         const int longitudDelCromosoma = 45;
         private Stopwatch reloj = new Stopwatch();
-        static public int fitnessRequerido = 1200;
+        static public int fitnessRequerido = 1350;
         static public int cantidadDeIteraciones = 1000;
         double mejorFitness = -1;
         private Logger logger;

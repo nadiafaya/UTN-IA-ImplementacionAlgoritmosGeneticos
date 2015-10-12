@@ -61,6 +61,9 @@
     <Compile Include="Condiciones\Condicion21.cs" />
     <Compile Include="Condiciones\Condicion22.cs" />
     <Compile Include="Condiciones\Condicion23.cs" />
+    <Compile Include="Condiciones\Condicion27.cs" />
+    <Compile Include="Condiciones\Condicion26.cs" />
+    <Compile Include="Condiciones\Condicion25.cs" />
     <Compile Include="Condiciones\Condicion24.cs" />
     <Compile Include="Condiciones\Condicion3.cs" />
     <Compile Include="Condiciones\Condicion4.cs" />

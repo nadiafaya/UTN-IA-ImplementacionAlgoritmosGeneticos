@@ -42,6 +42,9 @@ namespace Modelo
             condiciones.Add(new Condicion22());
             condiciones.Add(new Condicion23());
             condiciones.Add(new Condicion24());
+            condiciones.Add(new Condicion25());
+            condiciones.Add(new Condicion26());
+            condiciones.Add(new Condicion27());
         }
         #endregion
 
